@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('./db');
 const app = express();
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000;
 const cors = require('cors');
 
 app.use(express.json());
@@ -35,3 +35,7 @@ app.use('/supplier-invoices', require('./routes/supplierInvoices'));
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+app.get('/', (req, res) => {
+  res.send('Backend is running');
+});
+
